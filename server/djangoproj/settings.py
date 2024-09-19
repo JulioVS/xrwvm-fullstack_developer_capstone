@@ -28,12 +28,15 @@ SECRET_KEY =\
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-hp1 = 'https://julioer-8000.theiadockernext-1-labs'
-hp2 = '-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai'
-host = hp1 + hp2
-
-ALLOWED_HOSTS = ['localhost', host]
-CSRF_TRUSTED_ORIGINS = [host]
+ALLOWED_HOSTS = [
+    'localhost', 
+    'https://julioer-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01.'
+    'proxy.cognitiveclass.ai',
+]
+CSRF_TRUSTED_ORIGINS = [
+    'https://julioer-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01.'
+    'proxy.cognitiveclass.ai',
+]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [],
@@ -95,11 +98,12 @@ DATABASES = {
     }
 }
 
-v1 = 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'
-
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': v1,
+        'NAME': (
+            'django.contrib.auth.password_validation.'
+            'UserAttributeSimilarityValidator'
+        )
     },
     {
         'NAME':
